@@ -3,7 +3,7 @@ import "./WeatherDetails.css";
 
 function WeatherDetails({ cityData }) {
   const [data, setData] = useState("");
-  console.log(cityData);
+  // console.log(setHomeData);
   useEffect(() => {
     getCurrentCityData();
   }, [cityData.Key]);
@@ -13,7 +13,6 @@ function WeatherDetails({ cityData }) {
       `http://dataservice.accuweather.com/currentconditions/v1/${cityData.Key}?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT`
     ).then((response) => response.json());
     setData(result[0]);
-    console.log(result[0]);
   };
 
   return (

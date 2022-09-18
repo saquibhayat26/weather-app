@@ -11,9 +11,13 @@ import { useState, useEffect } from "react";
 
 // const MY_KEY = process.env.API_KEY;
 
-function WeatherForm() {
+function WeatherForm({ setHomeData }) {
   const [cityData, setCityData] = useState(null);
   const [citySearch, setCitySearch] = useState("");
+
+  useEffect(() => {
+    setHomeData(cityData);
+  });
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -25,13 +29,9 @@ function WeatherForm() {
     ).then((result) => result.json());
 
     setCityData(result[0]);
+    setHomeData(cityData);
     setCitySearch("");
   };
-
-  // const handleLocation = async (e) => {
-  //   const cityName = e.target.innerText;
-  //   setCity(cityName);
-  // };
 
   return (
     <div className="main__wrapper">
