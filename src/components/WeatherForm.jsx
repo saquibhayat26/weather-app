@@ -6,27 +6,24 @@ import WeatherDetails from "./WeatherDetails";
 function WeatherForm() {
   return (
     <div className="main__wrapper">
-      <form action="">
-        <div className="top">
-          <div className="input__container">
-            <input className="input" placeholder="add location" />
-            <div className="icon__container">
-              <SearchIcon className="icon" />
-            </div>
+      <form action="" className="top">
+        <div className="input__container">
+          <input className="input" placeholder="add location" />
+          <div className="icon__container">
+            <SearchIcon className="icon" />
           </div>
-          <table>
-            <tr>New Delhi</tr>
-            <tr>Kolkata</tr>
-            <tr>Mumbai</tr>
-            <tr>Banglore</tr>
-          </table>
-          <hr />
         </div>
-
-        <div className="bottom">
-          <WeatherDetails />
-        </div>
+        <table>
+          <tr>New Delhi</tr>
+          <tr>Kolkata</tr>
+          <tr>Mumbai</tr>
+          <tr>Banglore</tr>
+        </table>
+        <hr />
       </form>
+      <div className="bottom">
+        <WeatherDetails />
+      </div>
     </div>
   );
 }

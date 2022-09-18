@@ -3,6 +3,7 @@ import "./Home.css";
 
 // import { useState, useEffect } from "react";
 import WeatherForm from "../components/WeatherForm";
+import WeatherMap from "../components/WeatherMap";
 
 function Home() {
   // const [data, setData] = useState(null);
@@ -25,10 +26,10 @@ function Home() {
   return (
     <div className="wrapper">
       <div className="left">
-        <p>the weather</p>
+        <p>my weather</p>
+        <WeatherMap />
       </div>
       <div className="right">
-        <div className="right__blur"></div>
         <WeatherForm />
       </div>
     </div>

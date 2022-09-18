@@ -23,22 +23,26 @@ p {
 .left {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   flex: 6.5;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+
+.left > p {
+  padding-left: 15%;
+  padding-top: 10%;
 }
 
 .right {
+  background-image: url(https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHdlYXRoZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
+  width: 35%;
+  /* filter: blur(8px); */
+  opacity: 0.9;
   display: flex;
   flex-direction: column;
   flex: 3.5;
-  border: 1px solid black;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background: transparent;
-}
-
-.right__blur {
-  filter: blur(8px);
-  z-index: -1;
+  padding: 1em;
+  /* border: 1px solid black; */
+  /* z-index: 3; */
 }

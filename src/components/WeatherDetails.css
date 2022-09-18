@@ -1,0 +1,22 @@
+.mainWrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 2em;
+}
+
+.mainWrap > p {
+  margin-bottom: 1em;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrap > p {
+  margin-bottom: 0.5em;
+}
+
+hr {
+  margin-top: 1em;
+}
