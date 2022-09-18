@@ -1,0 +1,44 @@
+.wrapper {
+  background-image: url("../../public/images/tree.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 70%;
+  height: 80%;
+  /* padding: 20px; */
+  text-align: center;
+  display: flex;
+}
+
+p {
+  text-align: left;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  flex: 6.5;
+  border: 1px solid black;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  flex: 3.5;
+  border: 1px solid black;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
+
+.right__blur {
+  filter: blur(8px);
+  z-index: -1;
+}
