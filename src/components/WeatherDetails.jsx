@@ -1,20 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./WeatherDetails.css";
-function WeatherDetails() {
+
+function WeatherDetails({ cityData }) {
+  const [data, setData] = useState("");
+  console.log(cityData);
+  useEffect(() => {
+    getCurrentCityData();
+  }, [cityData.Key]);
+
+  const getCurrentCityData = async () => {
+    const result = await fetch(
+      `http://dataservice.accuweather.com/currentconditions/v1/${cityData.Key}?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT`
+    ).then((response) => response.json());
+    setData(result[0]);
+    console.log(result[0]);
+  };
+
   return (
     <div className="mainWrap">
-      <p>Weather Details</p>
+      <p>Geo Position Details</p>
       <div className="wrap">
-        <p>Cloudy</p>
-        <p>86%</p>
+        <p>Location</p>
+        <p>
+          {cityData.AdministrativeArea.EnglishName},
+          {cityData.AdministrativeArea.CountryID}
+        </p>
       </div>
       <div className="wrap">
-        <p>Humidity</p>
-        <p>66%</p>
+        <p>Mean Sea Level</p>
+        <p>{cityData.GeoPosition.Elevation.Imperial.Value} ft</p>
       </div>
       <div className="wrap">
-        <p>Wind</p>
-        <p>8 km/h</p>
+        <p>Latitude</p>
+        <p>{cityData.GeoPosition.Latitude}</p>
+      </div>
+      <div className="wrap">
+        <p>Longitude</p>
+        <p>{cityData.GeoPosition.Longitude}</p>
       </div>
       <hr />
     </div>

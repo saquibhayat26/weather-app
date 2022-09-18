@@ -5,7 +5,7 @@ function WeatherMap() {
   return (
     <div className="mainContainer">
       <div className="temp">
-        <p>24 C</p>
+        <p>24 &deg;C</p>
       </div>
       <div className="location">
         <p className="locationName">Patna</p>
