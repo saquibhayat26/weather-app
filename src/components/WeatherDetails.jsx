@@ -9,10 +9,33 @@ function WeatherDetails({ cityData }) {
   }, [cityData.Key]);
 
   const getCurrentCityData = async () => {
-    const result = await fetch(
-      `http://dataservice.accuweather.com/currentconditions/v1/${cityData.Key}?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT`
-    ).then((response) => response.json());
-    setData(result[0]);
+    const url = `http://dataservice.accuweather.com/currentconditions/v1/${cityData.Key}?apikey=9giJQ3SwGPCQTEYYoBH3YLQot5x30QHE`;
+    var headers = {};
+
+    await fetch(url, {
+      method: "GET",
+      // mode: "cors",
+      headers: headers,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.error);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setData(data[0]);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
+
+    // const result = await fetch(
+    //   `http://dataservice.accuweather.com/currentconditions/v1/${cityData.Key}?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT`
+    // ).then((response) => response.json());
+    // setData(result[0]);
+    // console.log(result);
   };
 
   return (

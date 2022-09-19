@@ -6,7 +6,8 @@ import WeatherMap from "../components/WeatherMap";
 import { InfinitySpin } from "react-loader-spinner";
 
 function Home() {
-  const [homeData, setHomeData] = useState("");
+  const [homeData, setHomeData] = useState(null);
+  console.log(homeData);
 
   return (
     <div className="wrapper">

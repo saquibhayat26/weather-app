@@ -34,4 +34,7 @@
 
 .weatherType {
   font-weight: 500;
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
 }

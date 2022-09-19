@@ -21,16 +21,41 @@ function WeatherForm({ setHomeData }) {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const city = e.target.innerText;
-    const result = await fetch(
-      `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT&q=${
-        city !== undefined ? city : citySearch
-      }`
-    ).then((result) => result.json());
+    const value = e.target.innerText;
+    const city = value !== undefined ? value : citySearch;
+    const url = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=9giJQ3SwGPCQTEYYoBH3YLQot5x30QHE&q=${city}`;
+    var headers = {};
 
-    setCityData(result[0]);
-    setHomeData(cityData);
-    setCitySearch("");
+    await fetch(url, {
+      method: "GET",
+      // mode: "cors",
+      headers: headers,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.error);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setCityData(data[0]);
+        setHomeData(cityData);
+        setCitySearch("");
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
+
+    // const result = await fetch(
+    //   `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT&q=${
+    //     city !== undefined ? city : citySearch
+    //   }`
+    // ).then((result) => result.json());
+    // console.log(result);
+    // setCityData(result[0]);
+    // setHomeData(cityData);
+    // setCitySearch("");
   };
 
   return (

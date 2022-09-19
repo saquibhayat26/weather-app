@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+import Moment from "react-moment";
 import "./WeatherMap.css";
 
 function WeatherMap({ currentCityData }) {
@@ -9,10 +11,32 @@ function WeatherMap({ currentCityData }) {
   }, [currentCityData.Key]);
 
   const getCurrentCityData = async () => {
-    const result = await fetch(
-      `http://dataservice.accuweather.com/currentconditions/v1/${currentCityData.Key}?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT`
-    ).then((response) => response.json());
-    setData(result[0]);
+    const url = `http://dataservice.accuweather.com/currentconditions/v1/${currentCityData.Key}?apikey=9giJQ3SwGPCQTEYYoBH3YLQot5x30QHE`;
+    var headers = {};
+
+    await fetch(url, {
+      method: "GET",
+      // mode: "cors",
+      headers: headers,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.error);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setData(data[0]);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
+
+    // const result = await fetch(
+    //   `http://dataservice.accuweather.com/currentconditions/v1/${currentCityData.Key}?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT`
+    // ).then((response) => response.json());
+    // setData(result[0]);
   };
 
   return (
@@ -21,13 +45,13 @@ function WeatherMap({ currentCityData }) {
         <p>{data.Temperature?.Metric.Value} &deg;C</p>
       </div>
       <div className="location">
-        <p className="locationName">
-          {currentCityData.AdministrativeArea.EnglishName}
+        <p className="locationName">{currentCityData.LocalizedName}</p>
+        <p className="date">
+          <Moment>{data?.LocalObservationDateTime}</Moment>
         </p>
-        <p className="date">Monday 28-12-2022</p>
       </div>
       <div className="weatherType">
-        <p>{data?.WeatherText}</p>
+        <p>({data?.WeatherText})</p>
       </div>
     </div>
   );
