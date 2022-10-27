@@ -16,7 +16,6 @@ function WeatherMap({ currentCityData }) {
 
     await fetch(url, {
       method: "GET",
-      // mode: "cors",
       headers: headers,
     })
       .then((response) => {
@@ -32,11 +31,6 @@ function WeatherMap({ currentCityData }) {
       .catch(function (error) {
         console.log(error.message);
       });
-
-    // const result = await fetch(
-    //   `http://dataservice.accuweather.com/currentconditions/v1/${currentCityData.Key}?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT`
-    // ).then((response) => response.json());
-    // setData(result[0]);
   };
 
   return (

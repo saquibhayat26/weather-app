@@ -65,3 +65,11 @@
 .bottom {
   flex: 4;
 }
+
+@media only screen and (max-width: 560px) {
+  .main__wrapper {
+    flex-direction: row;
+    gap: 8px;
+    margin: -8px;
+  }
+}

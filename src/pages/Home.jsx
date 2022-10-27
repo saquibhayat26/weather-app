@@ -12,7 +12,7 @@ function Home() {
   return (
     <div className="wrapper">
       <div className="left">
-        <p>my weather</p>
+        <p className="title">my weather</p>
         {homeData ? (
           <WeatherMap currentCityData={homeData} />
         ) : (
