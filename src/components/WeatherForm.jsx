@@ -1,15 +1,10 @@
 import React from "react";
 
-// import * as dotenv from "dotenv";
-// dotenv.config();
-
 import SearchIcon from "@mui/icons-material/Search";
 import "./WeatherForm.css";
 import WeatherDetails from "./WeatherDetails";
 
 import { useState, useEffect } from "react";
-
-// const MY_KEY = process.env.API_KEY;
 
 function WeatherForm({ setHomeData }) {
   const [cityData, setCityData] = useState(null);
@@ -23,12 +18,11 @@ function WeatherForm({ setHomeData }) {
     e.preventDefault();
     const value = e.target.innerText;
     const city = value !== undefined ? value : citySearch;
-    const url = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=9giJQ3SwGPCQTEYYoBH3YLQot5x30QHE&q=${city}`;
+    const url = `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=9giJQ3SwGPCQTEYYoBH3YLQot5x30QHE&q=${city}`;
     var headers = {};
 
     await fetch(url, {
       method: "GET",
-      // mode: "cors",
       headers: headers,
     })
       .then((response) => {
@@ -46,16 +40,6 @@ function WeatherForm({ setHomeData }) {
       .catch(function (error) {
         console.log(error.message);
       });
-
-    // const result = await fetch(
-    //   `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT&q=${
-    //     city !== undefined ? city : citySearch
-    //   }`
-    // ).then((result) => result.json());
-    // console.log(result);
-    // setCityData(result[0]);
-    // setHomeData(cityData);
-    // setCitySearch("");
   };
 
   return (

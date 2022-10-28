@@ -3,13 +3,12 @@ import "./WeatherDetails.css";
 
 function WeatherDetails({ cityData }) {
   const [data, setData] = useState("");
-  // console.log(setHomeData);
   useEffect(() => {
     getCurrentCityData();
   }, [cityData.Key]);
 
   const getCurrentCityData = async () => {
-    const url = `http://dataservice.accuweather.com/currentconditions/v1/${cityData.Key}?apikey=9giJQ3SwGPCQTEYYoBH3YLQot5x30QHE`;
+    const url = `https://dataservice.accuweather.com/currentconditions/v1/${cityData.Key}?apikey=9giJQ3SwGPCQTEYYoBH3YLQot5x30QHE`;
     var headers = {};
 
     await fetch(url, {
@@ -30,12 +29,6 @@ function WeatherDetails({ cityData }) {
       .catch(function (error) {
         console.log(error.message);
       });
-
-    // const result = await fetch(
-    //   `http://dataservice.accuweather.com/currentconditions/v1/${cityData.Key}?apikey=QrJ2LISfygigSQA3D1pEXnsv58dDYtIT`
-    // ).then((response) => response.json());
-    // setData(result[0]);
-    // console.log(result);
   };
 
   return (

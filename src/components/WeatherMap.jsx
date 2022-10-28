@@ -5,13 +5,13 @@ import "./WeatherMap.css";
 
 function WeatherMap({ currentCityData }) {
   const [data, setData] = useState("");
-  console.log(currentCityData);
+
   useEffect(() => {
     getCurrentCityData();
-  }, [currentCityData.Key]);
+  }, [currentCityData]);
 
   const getCurrentCityData = async () => {
-    const url = `http://dataservice.accuweather.com/currentconditions/v1/${currentCityData.Key}?apikey=9giJQ3SwGPCQTEYYoBH3YLQot5x30QHE`;
+    const url = `https://dataservice.accuweather.com/currentconditions/v1/${currentCityData.Key}?apikey=9giJQ3SwGPCQTEYYoBH3YLQot5x30QHE`;
     var headers = {};
 
     await fetch(url, {
